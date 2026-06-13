@@ -1,0 +1,403 @@
+/* ============================
+   Dev Metrics — style.css
+   ============================ */
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* CSS Variables */
+:root {
+  --bg:       #0d0d14;
+  --surface:  #13131f;
+  --surface2: #1a1a2e;
+  --border:   rgba(255, 255, 255, 0.07);
+  --border2:  rgba(255, 255, 255, 0.12);
+  --text:     #e8e8f0;
+  --muted:    #7a7a9a;
+  --purple:   #7F77DD;
+  --blue:     #378ADD;
+  --green:    #4CAF50;
+  --orange:   #FFA500;
+  --red:      #E24B4A;
+}
+
+/* Base */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ============================
+   Header
+   ============================ */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.header-left h1 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #7F77DD, #378ADD);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-left p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.header-right {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 0.5px solid var(--border2);
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Divider */
+.divider {
+  height: 0.5px;
+  background: var(--border);
+  margin: 1.5rem 0;
+}
+
+/* ============================
+   Platform Cards
+   ============================ */
+.platform-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.platform-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top accent bar */
+.platform-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.platform-card.lc::before { background: var(--orange); }
+.platform-card.cc::before { background: var(--green); }
+.platform-card.cf::before { background: var(--blue); }
+
+.plat-name {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.platform-card.lc .plat-name { color: var(--orange); }
+.platform-card.cc .plat-name { color: var(--green); }
+.platform-card.cf .plat-name { color: var(--blue); }
+
+.plat-rating {
+  font-size: 36px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.platform-card.lc .plat-rating { color: var(--orange); }
+.platform-card.cc .plat-rating { color: var(--green); }
+.platform-card.cf .plat-rating { color: var(--blue); }
+
+.plat-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.plat-pill {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 0.5px solid;
+}
+
+.platform-card.lc .plat-pill {
+  color: var(--orange);
+  border-color: rgba(255, 165, 0, 0.3);
+  background: rgba(255, 165, 0, 0.07);
+}
+.platform-card.cc .plat-pill {
+  color: var(--green);
+  border-color: rgba(76, 175, 80, 0.3);
+  background: rgba(76, 175, 80, 0.07);
+}
+.platform-card.cf .plat-pill {
+  color: var(--blue);
+  border-color: rgba(55, 138, 221, 0.3);
+  background: rgba(55, 138, 221, 0.07);
+}
+
+/* ============================
+   Middle Row (Solved + Activity)
+   ============================ */
+.mid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.card-title {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+/* Donut */
+.solve-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.donut-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.donut-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-num {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text);
+  line-height: 1;
+}
+
+.donut-sub {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* Difficulty bars */
+.diff-list { flex: 1; }
+
+.diff-item { margin-bottom: 10px; }
+.diff-item:last-child { margin-bottom: 0; }
+
+.diff-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+.easy   { color: var(--green); }
+.medium { color: var(--orange); }
+.hard   { color: var(--red); }
+
+.diff-count {
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+.diff-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.diff-fill { height: 100%; border-radius: 2px; }
+.easy-fill   { background: var(--green); }
+.medium-fill { background: var(--orange); }
+.hard-fill   { background: var(--red); }
+
+.diff-note {
+  margin-top: 10px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* Activity mini stats */
+.activity-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mini-stat {
+  background: var(--surface2);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.mini-val {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.mini-lbl {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* Color helpers */
+.purple { color: var(--purple); }
+.blue   { color: var(--blue); }
+.green  { color: var(--green); }
+.orange { color: var(--orange); }
+
+/* ============================
+   Stat Tables Row
+   ============================ */
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.stat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stat-table tr {
+  border-bottom: 0.5px solid var(--border);
+}
+
+.stat-table tr:last-child {
+  border-bottom: none;
+}
+
+.stat-table td {
+  padding: 7px 0;
+  font-size: 12px;
+}
+
+.stat-table td:first-child {
+  color: var(--muted);
+}
+
+.stat-table td:last-child {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text);
+}
+
+/* ============================
+   Chart Card
+   ============================ */
+.chart-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.chart-wrap {
+  position: relative;
+  width: 100%;
+  height: 160px;
+}
+
+/* ============================
+   Footer
+   ============================ */
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 2rem;
+}
+
+.footer a {
+  color: var(--purple);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* ============================
+   Responsive
+   ============================ */
+@media (max-width: 600px) {
+  .platform-row { grid-template-columns: 1fr; }
+  .mid-row      { grid-template-columns: 1fr; }
+  .stats-row    { grid-template-columns: 1fr; }
+  .header       { flex-direction: column; }
+}
